@@ -33,7 +33,7 @@ namespace Chessington.UI.ViewModels
             currentPiece = Board.GetPiece(message.Square);
             if (currentPiece == null) return;
 
-            var moves = new ReadOnlyCollection<Square>(currentPiece.GetNonCheckMoves(Board).ToList());
+            var moves = new ReadOnlyCollection<Square>(currentPiece.GetAvailableMoves(Board).ToList());
             ChessingtonServices.EventAggregator.Publish(new ValidMovesUpdated(moves));
         }
 
@@ -54,21 +54,12 @@ namespace Chessington.UI.ViewModels
             if (currentPiece == null)
                 return;
 
-            var moves = currentPiece.GetNonCheckMoves(Board);
+            var moves = currentPiece.GetAvailableMoves(Board);
 
             if (moves.Contains(message.Square))
             {
                 currentPiece.MoveTo(Board, message.Square);
-
-                if (Board.IsCheckmate())
-                {
-                    MessageBox.Show(String.Format("Checkmate!{0}{0}{1} Wins.", Environment.NewLine,
-                        Board.CurrentPlayer == Player.White ? Player.Black : Player.White));
-                }
-                else if (Board.IsStalemate())
-                {
-                    MessageBox.Show("Stalemate.");
-                }
+                
                 ChessingtonServices.EventAggregator.Publish(new PiecesMoved(Board));
                 ChessingtonServices.EventAggregator.Publish(new SelectionCleared());
             }

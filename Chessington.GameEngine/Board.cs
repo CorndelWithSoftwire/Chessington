@@ -25,27 +25,7 @@ namespace Chessington.GameEngine
         {
             board[square.Row, square.Col] = pawn;
         }
-
-        public bool SquareIsAvailable(Square square)
-        {
-            return HasSquare(square)
-                && GetPiece(square) == null;
-        }
-
-        public bool SquareIsOccupied(Square square)
-        {
-            return HasSquare(square)
-                && GetPiece(square) != null;
-        }
-
-        public bool HasSquare(Square square)
-        {
-            return square.Col >= 0
-                && square.Row >= 0
-                && square.Col < GameSettings.BoardSize
-                && square.Row < GameSettings.BoardSize;
-        }
-
+    
         public Piece GetPiece(Square square)
         {
             return board[square.Row, square.Col];
@@ -63,96 +43,28 @@ namespace Chessington.GameEngine
 
         public void MovePiece(Square from, Square to)
         {
-            if (board[from.Row, from.Col] == null)
-            {
-                return;
-            }
-
             var movingPiece = board[from.Row, from.Col];
+            if (movingPiece == null) { return; }
 
             if (movingPiece.Player != CurrentPlayer)
             {
                 throw new ArgumentException("The supplied piece does not belong to the current player.");
             }
-            
+
+            //If the space we're moving to is occupied, we need to mark it as captured.
             if (board[to.Row, to.Col] != null)
             {
                 OnPieceCaptured(board[to.Row, to.Col]);
             }
-            
+
+            //Move the piece and set the 'from' square to be empty.
             board[to.Row, to.Col] = board[from.Row, from.Col];
             board[from.Row, from.Col] = null;
 
             CurrentPlayer = movingPiece.Player == Player.White ? Player.Black : Player.White;
             OnCurrentPlayerChanged(CurrentPlayer);
         }
-
-        public bool MoveIsIntoCheck(Square from, Square to)
-        {
-            var piece = board[from.Row, from.Col];
-            if (piece == null)
-            {
-                return false;
-            }
-
-            var player = piece.Player;
-
-            var testBoard = new Board(CurrentPlayer, (Piece[,])board.Clone());
-            testBoard.MovePiece(from, to);
-            return testBoard.IsPlayerInCheck(player);
-        }
-
-        public bool IsPlayerInCheck(Player player)
-        {
-            var playerKings = new List<Piece>();
-            var opposingPieces = new List<Piece>();
-
-            foreach (var piece in board)
-            {
-                if (piece == null)
-                {
-                    continue;
-                }
-                if (piece.Player != player)
-                {
-                    opposingPieces.Add(piece);
-                }
-                else if (piece is King)
-                {
-                    playerKings.Add(piece);
-                }
-            }
-            var kingLocations = playerKings.Select(FindPiece);
-
-            return opposingPieces.Any(p => p.GetAvailableMoves(this).Any(kingLocations.Contains));
-        }
-
-        public bool IsStalemate()
-        {
-            return !IsPlayerInCheck(CurrentPlayer) && PlayerHasNoValidMoves(CurrentPlayer);
-        }
-
-        public bool IsCheckmate()
-        {
-            return IsPlayerInCheck(CurrentPlayer) && PlayerHasNoValidMoves(CurrentPlayer);
-        }
-
-        public bool PlayerHasNoValidMoves(Player player)
-        {
-            foreach (var piece in board)
-            {
-                if (piece == null || piece.Player != player)
-                {
-                    continue;
-                }
-                if (piece.GetNonCheckMoves(this).Any())
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
+        
         public delegate void PieceCapturedEventHandler(Piece piece);
         
         public event PieceCapturedEventHandler PieceCaptured;
