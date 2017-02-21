@@ -55,5 +55,31 @@ namespace Chessington.GameEngine.Tests.Pieces
             var moves = rook.GetAvailableMoves(board);
             moves.Should().NotContain(Square.At(4, 7));
         }
+
+        [Test]
+        public void Rook_CanTake_OpposingPieces()
+        {
+            var board = new Board();
+            var rook = new Rook(Player.White);
+            board.AddPiece(Square.At(4, 4), rook);
+            var pieceToTake = new Pawn(Player.Black);
+            board.AddPiece(Square.At(4, 6), pieceToTake);
+
+            var moves = rook.GetAvailableMoves(board);
+            moves.Should().Contain(Square.At(4, 6));
+        }
+
+        [Test]
+        public void Rook_CannotTake_FriendlyPieces()
+        {
+            var board = new Board();
+            var rook = new Rook(Player.White);
+            board.AddPiece(Square.At(4, 4), rook);
+            var friendlyPiece = new Pawn(Player.White);
+            board.AddPiece(Square.At(4, 6), friendlyPiece);
+
+            var moves = rook.GetAvailableMoves(board);
+            moves.Should().NotContain(Square.At(4, 6));
+        }
     }
 }
