@@ -48,5 +48,18 @@ namespace Chessington.GameEngine.Tests.Pieces
 
             moves.Should().Contain(Square.At(2, 5));
         }
+
+        [Test]
+        public void Knights_CannotLeaveTheBoard()
+        {
+            var board = new Board();
+            var knight = new Knight(Player.White);
+            board.AddPiece(Square.At(0, 0), knight);
+
+            var moves = knight.GetAvailableMoves(board);
+
+            var expectedMoves = new List<Square> {Square.At(1, 2), Square.At(2, 1)};
+            moves.ShouldAllBeEquivalentTo(expectedMoves);
+        }
     }
 }
