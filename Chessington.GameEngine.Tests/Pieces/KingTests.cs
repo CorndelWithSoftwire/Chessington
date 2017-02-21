@@ -31,5 +31,24 @@ namespace Chessington.GameEngine.Tests.Pieces
 
             moves.ShouldAllBeEquivalentTo(expectedMoves);
         }
+
+        [Test]
+        public void Kings_CannotLeaveTheBoard()
+        {
+            var board = new Board();
+            var king = new King(Player.White);
+            board.AddPiece(Square.At(0, 0), king);
+
+            var moves = king.GetAvailableMoves(board);
+
+            var expectedMoves = new List<Square>
+            {
+                Square.At(1, 0),
+                Square.At(1, 1),
+                Square.At(0, 1)
+            };
+
+            moves.ShouldAllBeEquivalentTo(expectedMoves);
+        }
     }
 }
