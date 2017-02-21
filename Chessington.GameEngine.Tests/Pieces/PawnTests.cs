@@ -111,5 +111,29 @@ namespace Chessington.GameEngine.Tests.Pieces
 
             moves.Should().NotContain(Square.At(3, 3));
         }
+
+        [Test]
+        public void WhitePawns_CannotMove_AtTheTopOfTheBoard()
+        {
+            var board = new Board();
+            var pawn = new Pawn(Player.White);
+            board.AddPiece(Square.At(0, 3), pawn);
+
+            var moves = pawn.GetAvailableMoves(board);
+
+            moves.Should().BeEmpty();
+        }
+
+        [Test]
+        public void BlackPawns_CannotMove_AtTheBottomOfTheBoard()
+        {
+            var board = new Board();
+            var pawn = new Pawn(Player.Black);
+            board.AddPiece(Square.At(7, 3), pawn);
+
+            var moves = pawn.GetAvailableMoves(board);
+
+            moves.Should().BeEmpty();
+        }
     }
 }
