@@ -16,20 +16,8 @@ namespace Chessington.GameEngine.Pieces
                 for (var index = 1; index < limit; index++)
                 {
                     Square targetSquare = new Square(currentPosition.Row, currentPosition.Col + index*direction);
-                    if (board.IsSquareEmpty(targetSquare))
-                    {
-                        availableMoves.Add(targetSquare);
-                    }
-                    else
-                    {
-                        Player piecePlayer = board.GetPiece(targetSquare).Player;
-                        if (piecePlayer != currentPlayer)
-                        {
-                            availableMoves.Add(targetSquare);
-                        }
-
-                        break;
-                    }
+                    if (board.IsEmptyOrOpponent(targetSquare, currentPlayer)) availableMoves.Add(targetSquare);
+                    if (!board.IsSquareEmpty(targetSquare)) break;
                 }
             }
             foreach (var direction in directions)
@@ -38,20 +26,8 @@ namespace Chessington.GameEngine.Pieces
                 for (var index = 1; index <limit; index++)
                 {
                     Square targetSquare = new Square(currentPosition.Row + index*direction, currentPosition.Col);
-                    if (board.IsSquareEmpty(targetSquare))
-                    {
-                        availableMoves.Add(targetSquare);
-                    }
-                    else
-                    {
-                        Player piecePlayer = board.GetPiece(targetSquare).Player;
-                        if (piecePlayer != currentPlayer)
-                        {
-                            availableMoves.Add(targetSquare);
-                        }
-
-                        break;
-                    }
+                    if (board.IsEmptyOrOpponent(targetSquare, currentPlayer)) availableMoves.Add(targetSquare);
+                    if (!board.IsSquareEmpty(targetSquare)) break;
                 }
             }
             return availableMoves;
@@ -70,20 +46,8 @@ namespace Chessington.GameEngine.Pieces
                 {
                     Square targetSquare = new Square(currentPosition.Row + index*direction, 
                         currentPosition.Col + index*direction);
-                    if (board.IsSquareEmpty(targetSquare))
-                    {
-                        availableMoves.Add(targetSquare);
-                    }
-                    else
-                    {
-                        Player piecePlayer = board.GetPiece(targetSquare).Player;
-                        if (piecePlayer != currentPlayer)
-                        {
-                            availableMoves.Add(targetSquare);
-                        }
-
-                        break;
-                    }
+                    if (board.IsEmptyOrOpponent(targetSquare, currentPlayer)) availableMoves.Add(targetSquare);
+                    if (!board.IsSquareEmpty(targetSquare)) break;
                 }
             }
             foreach (var direction in directions)
@@ -91,24 +55,12 @@ namespace Chessington.GameEngine.Pieces
                 var limit = direction == 1 ? 
                     Math.Min(GameSettings.BoardSize - currentPosition.Col, currentPosition.Row + 1) 
                     : Math.Min(currentPosition.Col + 1, GameSettings.BoardSize - currentPosition.Row);
-                for (var index = 1; index <limit; index++)
+                for (var index = 1; index < limit; index++)
                 {
                     Square targetSquare = new Square(currentPosition.Row - index*direction, 
                         currentPosition.Col + index*direction);
-                    if (board.IsSquareEmpty(targetSquare))
-                    {
-                        availableMoves.Add(targetSquare);
-                    }
-                    else
-                    {
-                        Player piecePlayer = board.GetPiece(targetSquare).Player;
-                        if (piecePlayer != currentPlayer)
-                        {
-                            availableMoves.Add(targetSquare);
-                        }
-
-                        break;
-                    }
+                    if (board.IsEmptyOrOpponent(targetSquare, currentPlayer)) availableMoves.Add(targetSquare);
+                    if (!board.IsSquareEmpty(targetSquare)) break;
                 }
             }
             return availableMoves;
