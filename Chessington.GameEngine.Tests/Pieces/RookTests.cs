@@ -31,7 +31,7 @@ namespace Chessington.GameEngine.Tests.Pieces
         }
 
         [Test]
-        public void Rook_CannnotPassThrough_OpposingPieces()
+        public void Rook_CannotPassThrough_OpposingPieces()
         {
             var board = new Board();
             var rook = new Rook(Player.White);
@@ -44,7 +44,7 @@ namespace Chessington.GameEngine.Tests.Pieces
         }
 
         [Test]
-        public void Rook_CannnotPassThrough_FriendlyPieces()
+        public void Rook_CannotPassThrough_FriendlyPieces()
         {
             var board = new Board();
             var rook = new Rook(Player.White);

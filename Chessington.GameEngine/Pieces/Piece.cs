@@ -34,27 +34,49 @@ namespace Chessington.GameEngine.Pieces
                 {
                     availableMoves.Add(Square.At(currentRow + columnsAway, col));
                 }
+
                 if (Enumerable.Range(0, 8).Contains(currentRow - columnsAway))
                 {
                     availableMoves.Add(Square.At(currentRow - columnsAway, col));
                 }
             }
+
             availableMoves.RemoveAll(x => x == Square.At(currentRow, currentCol));
-            return availableMoves; 
+            return availableMoves;
         }
 
         public IEnumerable<Square> GetLateralMoves(Board board)
         {
-            var currentPos = board.FindPiece(this);
-            var row = currentPos.Row;
-            var col = currentPos.Col;
             List<Square> availableMoves = new List<Square>();
-            foreach (var i in Enumerable.Range(0, 8))
+
+            availableMoves.AddRange(ExploreInOneDirection(1, 0, board));
+            availableMoves.AddRange(ExploreInOneDirection(-1, 0, board));
+            availableMoves.AddRange(ExploreInOneDirection(0, 1, board));
+            availableMoves.AddRange(ExploreInOneDirection(0, -1, board));
+
+            availableMoves.OrderBy(x => x.Row).OrderByDescending(x => x.Col);
+
+            return availableMoves;
+        }
+
+        public IEnumerable<Square> ExploreInOneDirection(int rowDirection, int colDirection, Board board)
+        {
+            var currentPos = board.FindPiece(this);
+            var currentRow = currentPos.Row;
+            var currentCol = currentPos.Col;
+            List<Square> availableMoves = new List<Square>();
+
+            int tileDistance = 1;
+            while (Square.At(currentRow + tileDistance * rowDirection, currentCol + tileDistance * colDirection)
+                       .IsInbound() &&
+                   !Square.At(currentRow + tileDistance * rowDirection, currentCol + tileDistance * colDirection)
+                       .IsOccupied(board))
             {
-                availableMoves.Add(Square.At(row, i));
-                availableMoves.Add(Square.At(i, col));
+                availableMoves.Add(Square.At(currentRow + tileDistance * rowDirection,
+                    currentCol + tileDistance * colDirection));
+                tileDistance++;
             }
-            availableMoves.RemoveAll(x => x == Square.At(row, col));
+
             return availableMoves;
         }
     }

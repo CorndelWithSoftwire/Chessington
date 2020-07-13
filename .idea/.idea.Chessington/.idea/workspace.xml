@@ -15,16 +15,19 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/BishopTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/King.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Board.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/Pawn.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/BoardTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/KingTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/BishopTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Board.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/RookTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/PawnTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/KnightTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Square.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/BoardTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/Knight.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/KingTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/Piece.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/Rook.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -33,6 +36,8 @@
         <option value="$PROJECT_DIR$/Chessington.GameEngine/Pieces/King.cs" />
         <option value="$PROJECT_DIR$/Chessington.GameEngine/Square.cs" />
         <option value="$PROJECT_DIR$/Chessington.GameEngine/Pieces/Pawn.cs" />
+        <option value="$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/RookTests.cs" />
+        <option value="$PROJECT_DIR$/Chessington.GameEngine/Pieces/Piece.cs" />
       </list>
     </option>
   </component>
