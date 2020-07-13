@@ -23,25 +23,15 @@ namespace Chessington.GameEngine.Pieces
 
         public IEnumerable<Square> GetDiagonalMoves(Board board)
         {
-            var currentPos = board.FindPiece(this);
-            var currentRow = currentPos.Row;
-            var currentCol = currentPos.Col;
             List<Square> availableMoves = new List<Square>();
-            foreach (var col in Enumerable.Range(0, 8))
-            {
-                var columnsAway = col - currentCol;
-                if (Enumerable.Range(0, 8).Contains(currentRow + columnsAway))
-                {
-                    availableMoves.Add(Square.At(currentRow + columnsAway, col));
-                }
 
-                if (Enumerable.Range(0, 8).Contains(currentRow - columnsAway))
-                {
-                    availableMoves.Add(Square.At(currentRow - columnsAway, col));
-                }
-            }
+            availableMoves.AddRange(ExploreInOneDirection(1, 1, board));
+            availableMoves.AddRange(ExploreInOneDirection(1, -1, board));
+            availableMoves.AddRange(ExploreInOneDirection(-1, 1, board));
+            availableMoves.AddRange(ExploreInOneDirection(-1, -1, board));
 
-            availableMoves.RemoveAll(x => x == Square.At(currentRow, currentCol));
+            availableMoves.OrderBy(x => x.Row).OrderBy(x => x.Col);
+
             return availableMoves;
         }
 
