@@ -56,5 +56,17 @@ namespace Chessington.GameEngine
         {
             return Enumerable.Range(0, 8).Contains(this.Col) && Enumerable.Range(0, 8).Contains(this.Row);
         }
+
+        public bool IsOccupied(Board board)
+        {
+            if (board.GetPiece(this) == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

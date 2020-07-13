@@ -18,6 +18,8 @@
     <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/BishopTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/King.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Board.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/Pawn.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/PawnTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/KnightTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Square.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/BoardTests.cs" root0="FORCE_HIGHLIGHTING" />
@@ -28,8 +30,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Chessington.GameEngine/Pieces/Knight.cs" />
-        <option value="$PROJECT_DIR$/Chessington.GameEngine/Square.cs" />
         <option value="$PROJECT_DIR$/Chessington.GameEngine/Pieces/King.cs" />
+        <option value="$PROJECT_DIR$/Chessington.GameEngine/Square.cs" />
+        <option value="$PROJECT_DIR$/Chessington.GameEngine/Pieces/Pawn.cs" />
       </list>
     </option>
   </component>
