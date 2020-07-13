@@ -1,4 +1,6 @@
-﻿namespace Chessington.GameEngine
+﻿using System.Linq;
+
+namespace Chessington.GameEngine
 {
     public struct Square
     {
@@ -48,6 +50,11 @@
         public override string ToString()
         {
             return string.Format("Row {0}, Col {1}", Row, Col);
+        }
+
+        public bool IsInbound()
+        {
+            return Enumerable.Range(0, 8).Contains(this.Col) && Enumerable.Range(0, 8).Contains(this.Row);
         }
     }
 }
