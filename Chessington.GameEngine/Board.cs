@@ -30,7 +30,12 @@ namespace Chessington.GameEngine
         {
             return board[square.Row, square.Col];
         }
-        
+
+        public bool IsSquareEmpty(Square square)
+        {
+            return GetPiece(square) == null;
+        }
+
         public Square FindPiece(Piece piece)
         {
             for (var row = 0; row < GameSettings.BoardSize; row++)
