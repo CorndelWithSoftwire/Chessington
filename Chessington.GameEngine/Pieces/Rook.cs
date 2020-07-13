@@ -6,11 +6,20 @@ namespace Chessington.GameEngine.Pieces
     public class Rook : Piece
     {
         public Rook(Player player)
-            : base(player) { }
+            : base(player)
+        {
+        }
 
         public override IEnumerable<Square> GetAvailableMoves(Board board)
         {
-            return Enumerable.Empty<Square>();
+            var availableMoves = new List<Square>();
+            for (int i = 0; i < GameSettings.BoardSize; i++)
+            {
+                availableMoves.Add(Square.At(board.FindPiece(this).Row, i));
+                availableMoves.Add(Square.At(i, board.FindPiece(this).Col));
+            }
+
+            return availableMoves;
         }
     }
 }
