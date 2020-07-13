@@ -6,7 +6,9 @@ namespace Chessington.GameEngine.Pieces
     public class Knight : Piece
     {
         public Knight(Player player)
-            : base(player) { }
+            : base(player)
+        {
+        }
 
         public override IEnumerable<Square> GetAvailableMoves(Board board)
         {
@@ -15,25 +17,17 @@ namespace Chessington.GameEngine.Pieces
             var currentCol = currentPos.Col;
             List<Square> availableMoves = new List<Square>();
 
-            if (Square.At(currentRow - 2, currentCol + 1).IsInbound())
-                availableMoves.Add(Square.At(currentRow - 2, currentCol + 1));
-            if (Square.At(currentRow - 2, currentCol - 1).IsInbound())
-                availableMoves.Add(Square.At(currentRow - 2, currentCol - 1));
-            if (Square.At(currentRow - 1, currentCol + 2).IsInbound())
-                availableMoves.Add(Square.At(currentRow - 1, currentCol + 2));
-            if (Square.At(currentRow - 1, currentCol - 2).IsInbound())
-                availableMoves.Add(Square.At(currentRow -1, currentCol -2));
-            if (Square.At(currentRow + 1, currentCol + 2).IsInbound())
-                availableMoves.Add(Square.At(currentRow + 1, currentCol + 2));
-            if (Square.At(currentRow + 1, currentCol - 2).IsInbound())
-                availableMoves.Add(Square.At(currentRow + 1, currentCol - 2));
-            if (Square.At(currentRow +2, currentCol - 1).IsInbound())
-                availableMoves.Add(Square.At(currentRow +2, currentCol -1));
-            if (Square.At(currentRow +2, currentCol + 1).IsInbound())
-                availableMoves.Add(Square.At(currentRow +2, currentCol + 1));
+            availableMoves.Add(Square.At(currentRow - 2, currentCol + 1));
+            availableMoves.Add(Square.At(currentRow - 2, currentCol - 1));
+            availableMoves.Add(Square.At(currentRow - 1, currentCol + 2));
+            availableMoves.Add(Square.At(currentRow - 1, currentCol - 2));
+            availableMoves.Add(Square.At(currentRow + 1, currentCol + 2));
+            availableMoves.Add(Square.At(currentRow + 1, currentCol - 2));
+            availableMoves.Add(Square.At(currentRow + 2, currentCol - 1));
+            availableMoves.Add(Square.At(currentRow + 2, currentCol + 1));
 
-            availableMoves.OrderBy(x => x.Row).OrderByDescending(x => x.Col);
-            return availableMoves;
+            return availableMoves.Where(square => square.IsInbound() && (board.GetPiece(square) == null || board.GetPiece(square).Player != Player));
+
         }
     }
 }
