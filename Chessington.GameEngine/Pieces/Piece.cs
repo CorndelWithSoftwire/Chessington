@@ -63,7 +63,7 @@ namespace Chessington.GameEngine.Pieces
 
             var nextSquare = Square.At(currentRow + tileDistance * rowDirection,
                 currentCol + tileDistance * colDirection);
-            if (nextSquare.IsInbound() && board.GetPiece(nextSquare).Player != Player)
+            if (nextSquare.CanMoveOrTake(board, this))
             {
                 availableMoves.Add(nextSquare);
             }

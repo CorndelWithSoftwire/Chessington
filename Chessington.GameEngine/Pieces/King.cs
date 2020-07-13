@@ -21,7 +21,7 @@ namespace Chessington.GameEngine.Pieces
             {
                 foreach (var colDiff in Enumerable.Range(-1, 3))
                 {
-                    if (Square.At(currentRow + rowDiff, currentCol + colDiff).IsInbound())
+                    if (Square.At(currentRow + rowDiff, currentCol + colDiff).CanMoveOrTake(board, this))
                     {
                         availableMoves.Add(Square.At(currentRow + rowDiff, currentCol + colDiff));
                     }
@@ -30,7 +30,6 @@ namespace Chessington.GameEngine.Pieces
 
             availableMoves.RemoveAll(x => x == currentPos);
 
-            availableMoves.OrderBy(x => x.Row).OrderBy(x => x.Col);
             return availableMoves;
         }
     }

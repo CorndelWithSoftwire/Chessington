@@ -26,7 +26,7 @@ namespace Chessington.GameEngine.Pieces
             availableMoves.Add(Square.At(currentRow + 2, currentCol - 1));
             availableMoves.Add(Square.At(currentRow + 2, currentCol + 1));
 
-            return availableMoves.Where(square => square.IsInbound() && (board.GetPiece(square) == null || board.GetPiece(square).Player != Player));
+            return availableMoves.Where(square => square.CanMoveOrTake(board, this));
 
         }
     }
