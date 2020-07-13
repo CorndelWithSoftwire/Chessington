@@ -5,6 +5,8 @@ namespace Chessington.GameEngine.Pieces
 {
     public class Pawn : Piece
     {
+        
+        
         public Pawn(Player player) 
             : base(player) { }
 
@@ -12,16 +14,18 @@ namespace Chessington.GameEngine.Pieces
         {
             var currentPosition = board.FindPiece(this);
             List<Square> availableMoves = new List<Square>();
-            Square square;
+            
             if (Player == Player.White)
             {
-                square = new Square(currentPosition.Row - 1, currentPosition.Col);
+                availableMoves.Add(new Square(currentPosition.Row - 1, currentPosition.Col));
+                if (currentPosition.Row == 7) availableMoves.Add(new Square(currentPosition.Row -2, currentPosition.Col));
             }
             else
             {
-                square = new Square(currentPosition.Row + 1, currentPosition.Col);
+                availableMoves.Add(new Square(currentPosition.Row + 1, currentPosition.Col));
+                if (currentPosition.Row == 1)
+                    availableMoves.Add(new Square(currentPosition.Row + 2, currentPosition.Col));
             }
-            availableMoves.Add(square);
             return availableMoves;
         }
     }
