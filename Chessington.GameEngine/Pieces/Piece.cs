@@ -30,8 +30,6 @@ namespace Chessington.GameEngine.Pieces
             availableMoves.AddRange(ExploreInOneDirection(-1, 1, board));
             availableMoves.AddRange(ExploreInOneDirection(-1, -1, board));
 
-            availableMoves.OrderBy(x => x.Row).OrderBy(x => x.Col);
-
             return availableMoves;
         }
 
@@ -43,8 +41,6 @@ namespace Chessington.GameEngine.Pieces
             availableMoves.AddRange(ExploreInOneDirection(-1, 0, board));
             availableMoves.AddRange(ExploreInOneDirection(0, 1, board));
             availableMoves.AddRange(ExploreInOneDirection(0, -1, board));
-
-            availableMoves.OrderBy(x => x.Row).OrderByDescending(x => x.Col);
 
             return availableMoves;
         }
