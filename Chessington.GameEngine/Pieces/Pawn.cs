@@ -17,7 +17,7 @@ namespace Chessington.GameEngine.Pieces
             
             if (Player == Player.White)
             {
-                if (!Square.At(currentPosition.Row - 1, currentPosition.Col).IsOccupied(board))
+                if (Square.At(currentPosition.Row - 1, currentPosition.Col).CanMoveTo(board))
                 {
                     availableMoves.Add(new Square(currentPosition.Row - 1, currentPosition.Col));
 
@@ -30,7 +30,7 @@ namespace Chessington.GameEngine.Pieces
             }
             else
             {
-                if (!Square.At(currentPosition.Row + 1, currentPosition.Col).IsOccupied(board))
+                if (Square.At(currentPosition.Row + 1, currentPosition.Col).CanMoveTo(board))
                 {
                     availableMoves.Add(new Square(currentPosition.Row + 1, currentPosition.Col));
 

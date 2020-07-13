@@ -54,9 +54,7 @@ namespace Chessington.GameEngine.Pieces
 
             int tileDistance = 1;
             while (Square.At(currentRow + tileDistance * rowDirection, currentCol + tileDistance * colDirection)
-                       .IsInbound() &&
-                   !Square.At(currentRow + tileDistance * rowDirection, currentCol + tileDistance * colDirection)
-                       .IsOccupied(board))
+                       .CanMoveTo(board))
             {
                 availableMoves.Add(Square.At(currentRow + tileDistance * rowDirection,
                     currentCol + tileDistance * colDirection));
