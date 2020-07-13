@@ -16,6 +16,10 @@
             return new Square(row, col);
         }
 
+        public bool isValid() {
+            return Row >= 0 && Row < 8 && Col >= 0 && Col < 8;
+        }
+        
         public bool Equals(Square other)
         {
             return Row == other.Row && Col == other.Col;
