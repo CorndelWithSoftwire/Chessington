@@ -67,7 +67,7 @@ namespace Chessington.GameEngine.Tests.Pieces
             var moves = pawn.GetAvailableMoves(board).ToList();
 
             moves.Should().HaveCount(1);
-            moves.Should().Contain(square => square.Equals(Square.At(5, 2)));
+            moves.Should().Contain(square => square.Equals(Square.At(4, 2)));
         }
 
         [Test]
