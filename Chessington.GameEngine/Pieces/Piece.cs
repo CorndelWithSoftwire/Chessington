@@ -61,6 +61,13 @@ namespace Chessington.GameEngine.Pieces
                 tileDistance++;
             }
 
+            var nextSquare = Square.At(currentRow + tileDistance * rowDirection,
+                currentCol + tileDistance * colDirection);
+            if (nextSquare.IsInbound() && board.GetPiece(nextSquare).Player != Player)
+            {
+                availableMoves.Add(nextSquare);
+            }
+
             return availableMoves;
         }
     }

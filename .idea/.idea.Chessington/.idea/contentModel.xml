@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\User\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\User\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_Chessington.584299051.00" t="ExcludeRecursive" />
-    <e p="D:\Workspace\SoftwireWork\Chessington" t="IncludeFlat">
+    <e p="C:\Users\tedwhi\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\tedwhi\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_Chessington.-1861624220.00" t="ExcludeRecursive" />
+    <e p="C:\Work\Training\Chessington" t="IncludeFlat">
       <e p="Chessington.GameEngine" t="IncludeRecursive">
         <e p="bin" t="ExcludeRecursive" />
         <e p="Board.cs" t="Include" />

@@ -5,31 +5,42 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22862624-33b8-4426-9a58-8a5363dbfa1f" name="Default Changelist" comment="" />
+    <list default="true" id="22862624-33b8-4426-9a58-8a5363dbfa1f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chessington/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chessington/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chessington/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chessington/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chessington.GameEngine/Pieces/Piece.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Chessington.GameEngine/Pieces/Piece.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/King.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/Pawn.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/BoardTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/KingTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/BishopTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/Bishop.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/Knight.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/Queen.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Square.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/KnightTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/PawnTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/QueenTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Board.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/RookTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/QueenTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/PawnTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/KnightTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Square.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/Queen.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/Knight.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/Piece.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/BishopTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/KingTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/GameSettings.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine.Tests/BoardTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/Pawn.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/King.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/Rook.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Chessington.GameEngine/Pieces/Piece.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -38,19 +49,60 @@
         <option value="$PROJECT_DIR$/Chessington.GameEngine/Pieces/King.cs" />
         <option value="$PROJECT_DIR$/Chessington.GameEngine.Tests/Pieces/RookTests.cs" />
         <option value="$PROJECT_DIR$/Chessington.GameEngine/Square.cs" />
-        <option value="$PROJECT_DIR$/Chessington.GameEngine/Pieces/Piece.cs" />
         <option value="$PROJECT_DIR$/Chessington.GameEngine/Pieces/Pawn.cs" />
+        <option value="$PROJECT_DIR$/Chessington.GameEngine/Pieces/Piece.cs" />
       </list>
     </option>
   </component>
+  <component name="ProjectId" id="1edST8PY3A77KLwzUvG5AIdWZBO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RunManager" selected=".NET Project.Chessington.UI">
+    <configuration name="Chessington.UI" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/Chessington.UI/Chessington.UI.csproj" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="Console" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="22862624-33b8-4426-9a58-8a5363dbfa1f" name="Default Changelist" comment="" />
+      <created>1594649983479</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1594649983479</updated>
+      <workItem from="1594649994855" duration="616000" />
+    </task>
     <servers />
   </component>
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -63,5 +115,26 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1558" height="223" key="GridCell.Tab.0.bottom" timestamp="1594650136177">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1558" height="223" key="GridCell.Tab.0.bottom/0.0.1600.860/3200.0.1920.1040@0.0.1600.860" timestamp="1594650136177" />
+    <state width="1558" height="223" key="GridCell.Tab.0.center" timestamp="1594650136176">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1558" height="223" key="GridCell.Tab.0.center/0.0.1600.860/3200.0.1920.1040@0.0.1600.860" timestamp="1594650136176" />
+    <state width="1558" height="223" key="GridCell.Tab.0.left" timestamp="1594650136176">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1558" height="223" key="GridCell.Tab.0.left/0.0.1600.860/3200.0.1920.1040@0.0.1600.860" timestamp="1594650136176" />
+    <state width="1558" height="223" key="GridCell.Tab.0.right" timestamp="1594650136177">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="1558" height="223" key="GridCell.Tab.0.right/0.0.1600.860/3200.0.1920.1040@0.0.1600.860" timestamp="1594650136177" />
   </component>
 </project>
