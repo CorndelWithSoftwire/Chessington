@@ -16,9 +16,15 @@ namespace Chessington.GameEngine.Pieces
                 if (here.Row != 0) {
                     available.Add(new Square(here.Row - 1, here.Col ));
                 }
+                if (here.Row == 6) {
+                    available.Add(new Square(4, here.Col ));
+                }
             } else {
                 if (here.Row != 7) {
                     available.Add(new Square(here.Row + 1, here.Col));
+                }
+                if (here.Row == 1) {
+                    available.Add(new Square(3, here.Col ));
                 }
             }
             return available;
