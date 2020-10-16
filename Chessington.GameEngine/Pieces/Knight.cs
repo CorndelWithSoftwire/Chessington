@@ -10,7 +10,21 @@ namespace Chessington.GameEngine.Pieces
 
         public override IEnumerable<Square> GetAvailableMoves(Board board)
         {
-            return Enumerable.Empty<Square>();
+            var oneMinusOne = new List<int>(new[] { 1, -1 });
+            var twoMinusTwo = new List<int>(new[] { 2, -2 });
+
+            // Make set of possible jumps: (+-2, +- 1) u (+-1, +-2)
+            var eastWestJumps = oneMinusOne.SelectMany(
+                x => twoMinusTwo,
+                (northSouth, eastWest) => (northSouth, eastWest)
+            );
+            var northSouthJumps = twoMinusTwo.SelectMany(
+                x => oneMinusOne,
+                (northSouth, eastWest) => (northSouth, eastWest)
+            );
+            var jumps = northSouthJumps.Union(eastWestJumps);
+
+            return ApplyMoves(jumps, board);
         }
     }
 }
