@@ -14,10 +14,10 @@ namespace Chessington.GameEngine.Pieces
             var currentSquare = board.FindPiece(this);
             for (int i = 1; i < GameSettings.BoardSize; i++)
             {
-                var row = (currentSquare.Row + i) % GameSettings.BoardSize;
-                var col = (currentSquare.Col + i) % GameSettings.BoardSize;
-                moves.Add(new Square(currentSquare.Row, col));
-                moves.Add(new Square(row, currentSquare.Col));
+                AddIfOnBoard(new Square(currentSquare.Row + i, currentSquare.Col), moves);
+                AddIfOnBoard(new Square(currentSquare.Row - i, currentSquare.Col), moves);
+                AddIfOnBoard(new Square(currentSquare.Row, currentSquare.Col + i), moves);
+                AddIfOnBoard(new Square(currentSquare.Row, currentSquare.Col - i), moves);
             }
 
             return moves;
