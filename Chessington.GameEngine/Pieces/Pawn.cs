@@ -15,6 +15,12 @@ namespace Chessington.GameEngine.Pieces
             moves.Add(this.Player == Player.White
                 ? Square.At(currentSquare.Row - 1, currentSquare.Col)
                 : Square.At(currentSquare.Row + 1, currentSquare.Col));
+            if (!HasMoved)
+            {
+                moves.Add(this.Player == Player.White
+                    ? Square.At(currentSquare.Row - 2, currentSquare.Col)
+                    : Square.At(currentSquare.Row + 2, currentSquare.Col));
+            }
             return moves;
         }
     }
