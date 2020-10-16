@@ -23,50 +23,60 @@ namespace Chessington.GameEngine.Pieces
 
         protected IEnumerable<Square> GetAvailableLateralMoves(Board board)
         {
-            var location = board.FindPiece(this);
-            var availableLocations = new List<Square>();
+            var zeroes = Enumerable.Repeat(0, 15);
+            var minusSevenToSeven = Enumerable.Range(-7, 15);
 
-            availableLocations.AddRange(
-                Enumerable.Range(0, 8)
-                    .Select(i => new Square(location.Row, i))
-            );
+            var moves = zeroes.Zip(minusSevenToSeven, (x,y)=>(x,y));
+            moves = moves.Union(minusSevenToSeven.Zip(zeroes, (x, y) => (x, y)));
 
-            availableLocations.AddRange(
-                Enumerable.Range(0, 8)
-                    .Select(i => new Square(i, location.Col))
-            );
-
-            // Remove this location from the list
-            availableLocations.RemoveAll(location.Equals);
-
-            return availableLocations;
+            return ApplyMoves(moves, board);
         }
 
         protected IEnumerable<Square> GetAvailableDiagonalMoves(Board board)
         {
-            var location = board.FindPiece(this);
-
             // Produce a zipped set of diagonal directions (South West, South East, North West, North East)
             var diagonalDirections = new List<(int northSouth, int eastWest)>(new[] { (-1, -1), (-1, 1), (1, -1), (1, 1) });
 
             // Send diagonal lines out 8 squares in each diagonal direction
-            var fullRangeOfMotion = diagonalDirections.Select(directions =>
+            var moves = diagonalDirections.Select(directions =>
             {
-                return Enumerable.Range(1, 7).Select(i => new Square(
-                    location.Row + directions.northSouth * i,
-                    location.Col + directions.eastWest * i)
+                return Enumerable.Range(1, 7).Select(i => (
+                    directions.northSouth * i,
+                    directions.eastWest * i)
                 );
             });
 
             // Flatten from four lists of lists of squares to one list
-            var availableLocations = fullRangeOfMotion.SelectMany(x => x).ToList();
+            var movesFlattened = moves.SelectMany(x => x).ToList();
 
-            // Remove squares not on the board
-            availableLocations.RemoveAll(square =>
-                square.Col < 0 || 7 < square.Col || square.Row < 0 || 7 < square.Row
+            return ApplyMoves(movesFlattened, board);
+        }
+
+        protected IEnumerable<Square> ApplyMoves(IEnumerable<(int northSouth, int eastWest)> moves, Board board)
+        {
+            var location = board.FindPiece(this);
+
+            var availableLocations = moves.Select(directions =>
+                new Square(
+                    location.Row + directions.northSouth,
+                    location.Col + directions.eastWest
+                )
             );
 
+            // Remove squares not on the board
+            availableLocations = Piece.RemoveInvalidSquares(availableLocations);
+
+            // Remove current location
+            availableLocations = availableLocations.Where(square => square != location);
+
             return availableLocations;
+        }
+
+        protected static IEnumerable<Square> RemoveInvalidSquares(IEnumerable<Square> squares)
+        {
+            return squares.Where(square =>
+                0 <= square.Col && square.Col <= 7 && 0 <= square.Row && square.Row <= 7
+            );
         }
     }
 }
