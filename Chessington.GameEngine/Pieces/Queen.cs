@@ -12,13 +12,12 @@ namespace Chessington.GameEngine.Pieces
         {
             var moves = new List<Square>();
             var currentSquare = board.FindPiece(this);
-            var directions = CardinalDirections;
-            directions.AddRange(DiagonalDirections);
+            var directions = CardinalDirections.Concat(DiagonalDirections);
             for (int i = 1; i < GameSettings.BoardSize; i++)
             {
                 foreach (var direction in directions)
                 {
-                    moves.AddIfOnBoard(Square.At(currentSquare.Row + i * direction.Item1, currentSquare.Col + i * direction.Item2));
+                    moves.AddIfOnBoard(Square.At(currentSquare.Row + i * direction.X, currentSquare.Col + i * direction.Y));
                 }
             }
 
