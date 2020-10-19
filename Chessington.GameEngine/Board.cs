@@ -28,7 +28,15 @@ namespace Chessington.GameEngine
     
         public Piece GetPiece(Square square)
         {
-            return board[square.Row, square.Col];
+            try
+            {
+                return board[square.Row, square.Col];
+            }
+            catch (IndexOutOfRangeException)
+            {
+                return null;
+            }
+            
         }
         
         public Square FindPiece(Piece piece)

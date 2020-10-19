@@ -13,15 +13,14 @@ namespace Chessington.GameEngine.Pieces
             var moves = new List<Square>();
             var currentSquare = board.FindPiece(this);
             var directions = CardinalDirections;
+            var helpers = new Helpers();
             for (int i = 1; i < GameSettings.BoardSize; i++)
             {
-                foreach (var direction in directions)
-                {
-                    moves.AddIfOnBoard(Square.At(currentSquare.Row + i * direction.RowOffset, currentSquare.Col + i * direction.ColOffset));
-                }
+                directions = helpers.AddMovesAndUpdateDirections(board, directions, currentSquare, i, moves);
             }
 
             return moves;
         }
+
     }
 }
