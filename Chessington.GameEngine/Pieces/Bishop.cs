@@ -17,7 +17,7 @@ namespace Chessington.GameEngine.Pieces
             {
                 foreach (var direction in directions)
                 {
-                    moves.AddIfOnBoard(Square.At(currentSquare.Row + i * direction.X, currentSquare.Col + i * direction.Y));
+                    moves.AddIfOnBoard(Square.At(currentSquare.Row + i * direction.RowOffset, currentSquare.Col + i * direction.ColOffset));
                 }
             }
 
