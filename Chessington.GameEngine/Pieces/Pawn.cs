@@ -13,18 +13,18 @@ namespace Chessington.GameEngine.Pieces
             var moves = new List<Square>();
             var currentSquare = board.FindPiece(this);
             var playerDirection = this.Player == Player.White ? -1 : 1;
-            var potentialMove = Square.At(currentSquare.Row + playerDirection, currentSquare.Col);
-            
-            if (board.GetPiece(potentialMove) == null)
+            var moveOneStep = Square.At(currentSquare.Row + playerDirection, currentSquare.Col);
+            var moveTwoSteps = Square.At(currentSquare.Row + 2 * playerDirection, currentSquare.Col);
+
+            if (board.GetPiece(moveOneStep) == null)
             {
-                moves.AddIfOnBoard(potentialMove);
-                potentialMove = Square.At(currentSquare.Row + 2 * playerDirection, currentSquare.Col);
-                if (!HasMoved && moves.Any() && board.GetPiece(potentialMove) == null)
-                {
-                    moves.AddIfOnBoard(potentialMove);
-                }
+                moves.AddIfOnBoard(moveOneStep);
             }
-        
+            if (!HasMoved && moves.Any() && board.GetPiece(moveTwoSteps) == null)
+            {
+                moves.AddIfOnBoard(moveTwoSteps);
+            }
+
             return moves;
         }
     }
