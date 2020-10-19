@@ -4,13 +4,13 @@ namespace Chessington.GameEngine
 {
     public class Direction
     {
-        public int X { get; private set; }
-        public int Y { get; private set; }
+        public int RowOffset { get; private set; }
+        public int ColOffset { get; private set; }
 
-        public Direction(int x, int y)
+        public Direction(int rowOffset, int colOffset)
         {
-            X = x;
-            Y = y;
+            RowOffset = rowOffset;
+            ColOffset = colOffset;
         }
     }
 }
