@@ -16,7 +16,7 @@ namespace Chessington.GameEngine.Pieces
             var helpers = new Helpers();
             for (int i = 1; i < GameSettings.BoardSize; i++)
             {
-                directions = helpers.AddMovesAndUpdateDirections(board, directions, currentSquare, i, moves);
+                directions = helpers.AddMovesAndUpdateDirections(board, directions, currentSquare, i, moves, this.Player);
             }
 
             return moves;
