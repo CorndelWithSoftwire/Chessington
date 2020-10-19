@@ -12,16 +12,14 @@ namespace Chessington.GameEngine.Pieces
         {
             var moves = new List<Square>();
             var currentSquare = board.FindPiece(this);
-            var moveX = 2;
-            var moveY = 1;
-            moves.AddIfOnBoard(new Square(currentSquare.Row + moveX, currentSquare.Col + moveY));
-            moves.AddIfOnBoard(new Square(currentSquare.Row + moveX, currentSquare.Col - moveY));
-            moves.AddIfOnBoard(new Square(currentSquare.Row - moveX, currentSquare.Col + moveY));
-            moves.AddIfOnBoard(new Square(currentSquare.Row - moveX, currentSquare.Col - moveY));
-            moves.AddIfOnBoard(new Square(currentSquare.Row + moveY, currentSquare.Col + moveX));
-            moves.AddIfOnBoard(new Square(currentSquare.Row + moveY, currentSquare.Col - moveX));
-            moves.AddIfOnBoard(new Square(currentSquare.Row - moveY, currentSquare.Col + moveX));
-            moves.AddIfOnBoard(new Square(currentSquare.Row - moveY, currentSquare.Col - moveX));
+            moves.AddIfOnBoard(Square.At(currentSquare.Row + 2, currentSquare.Col + 1));
+            moves.AddIfOnBoard(Square.At(currentSquare.Row + 2, currentSquare.Col - 1));
+            moves.AddIfOnBoard(Square.At(currentSquare.Row - 2, currentSquare.Col + 1));
+            moves.AddIfOnBoard(Square.At(currentSquare.Row - 2, currentSquare.Col - 1));
+            moves.AddIfOnBoard(Square.At(currentSquare.Row + 1, currentSquare.Col + 2));
+            moves.AddIfOnBoard(Square.At(currentSquare.Row + 1, currentSquare.Col - 2));
+            moves.AddIfOnBoard(Square.At(currentSquare.Row - 1, currentSquare.Col + 2));
+            moves.AddIfOnBoard(Square.At(currentSquare.Row - 1, currentSquare.Col - 2));
 
             return moves;
         }
