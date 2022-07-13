@@ -17,7 +17,13 @@ namespace Chessington.GameEngine.Pieces
 
             for (int i = 0; i < 8; ++i)
             {
-                moves.Add(Square.At(position.Row + moveRow[i], position.Col + moveCol[i]));
+                var pos = Square.At(position.Row + moveRow[i], position.Col + moveCol[i]);
+
+                if (pos.Row >= 0 && pos.Row <= 7 && pos.Col >= 0 && pos.Row <= 7 && (board.GetPiece(pos) == null
+                        || board.GetPiece(pos) != null && this.Player != board.GetPiece(pos).Player))
+                {
+                    moves.Add(pos);
+                }
             }
 
             moves.RemoveAll(x => x.Row < 0 || x.Row > 7 || x.Col < 0 || x.Row > 7);

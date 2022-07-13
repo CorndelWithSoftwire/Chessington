@@ -8,15 +8,20 @@ namespace Chessington.GameEngine
     public class Board
     {
         private readonly Piece[,] board;
+        private Piece lastMoved;
         public Player CurrentPlayer { get; private set; }
-        public IList<Piece> CapturedPieces { get; private set; } 
+        public IList<Piece> CapturedPieces { get; private set; }
 
         public Board()
-            : this(Player.White) { }
+            : this(Player.White)
+        {
+            lastMoved = null;
+        }
 
         public Board(Player currentPlayer, Piece[,] boardState = null)
         {
-            board = boardState ?? new Piece[GameSettings.BoardSize, GameSettings.BoardSize]; 
+            board = boardState ?? new Piece[GameSettings.BoardSize, GameSettings.BoardSize];
+            lastMoved = null;
             CurrentPlayer = currentPlayer;
             CapturedPieces = new List<Piece>();
         }
@@ -25,10 +30,20 @@ namespace Chessington.GameEngine
         {
             board[square.Row, square.Col] = pawn;
         }
+
+        public void RemovePiece(Square square)
+        {
+            board[square.Row, square.Col] = null;
+        }
     
         public Piece GetPiece(Square square)
         {
             return board[square.Row, square.Col];
+        }
+
+        public Piece GetLastMoved()
+        {
+            return lastMoved;
         }
         
         public Square FindPiece(Piece piece)
@@ -41,12 +56,12 @@ namespace Chessington.GameEngine
             throw new ArgumentException("The supplied piece is not on the board.", "piece");
         }
 
-        public void MovePiece(Square from, Square to)
+        public void MovePiece(Square from, Square to, bool enPassant = false)
         {
             var movingPiece = board[from.Row, from.Col];
             if (movingPiece == null) { return; }
 
-            if (movingPiece.Player != CurrentPlayer)
+            if (movingPiece.Player != CurrentPlayer && !enPassant)
             {
                 throw new ArgumentException("The supplied piece does not belong to the current player.");
             }
@@ -63,6 +78,8 @@ namespace Chessington.GameEngine
 
             CurrentPlayer = movingPiece.Player == Player.White ? Player.Black : Player.White;
             OnCurrentPlayerChanged(CurrentPlayer);
+
+            lastMoved = movingPiece;
         }
         
         public delegate void PieceCapturedEventHandler(Piece piece);
