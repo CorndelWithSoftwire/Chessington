@@ -19,7 +19,7 @@ namespace Chessington.GameEngine.Tests.Pieces
 
             var expectedMoves = new List<Square>();
 
-            //Checking the backwards diagonal, i.e. 0,0 1,1, 2,2
+            //Checking the backwards diagonal, i.e. 0,0 1,1 2,2
             for (var i = 0; i < 8; i++)
                 expectedMoves.Add(Square.At(i, i));
 
