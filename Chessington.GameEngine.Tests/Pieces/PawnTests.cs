@@ -218,6 +218,12 @@ namespace Chessington.GameEngine.Tests.Pieces
 
             pawn.MoveTo(board, Square.At(4, 4));
             secondPawn.MoveTo(board, Square.At(3, 3));
+            pawn.MoveTo(board, Square.At(3, 4));
+            targetPawn.MoveTo(board, Square.At(3, 3));
+
+            var moves = pawn.GetAvailableMoves(board).ToList();
+
+            moves.Should().Contain(Square.At(2, 3));
         }
 
         [Test]
@@ -229,6 +235,7 @@ namespace Chessington.GameEngine.Tests.Pieces
 
             pawn.MoveTo(board, Square.At(0, 3));
             board.GetPiece(Square.At(0, 3)).Should().BeOfType(typeof(Queen));
+            board.GetPiece(Square.At(0, 3)).Player.Should().Be(Player.White);
         }
     }
 }

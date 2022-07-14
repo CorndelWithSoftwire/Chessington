@@ -9,6 +9,7 @@ namespace Chessington.GameEngine
     {
         private readonly Piece[,] board;
         private Piece lastMoved;
+        private Player check;
         public Player CurrentPlayer { get; private set; }
         public IList<Piece> CapturedPieces { get; private set; }
 
@@ -16,6 +17,7 @@ namespace Chessington.GameEngine
             : this(Player.White)
         {
             lastMoved = null;
+            check = Player.None;
         }
 
         public Board(Player currentPlayer, Piece[,] boardState = null)
@@ -44,6 +46,16 @@ namespace Chessington.GameEngine
         public Piece GetLastMoved()
         {
             return lastMoved;
+        }
+
+        public Player GetCheck()
+        {
+            return check;
+        }
+
+        public void SetCheck(Player player)
+        {
+            check = player;
         }
         
         public Square FindPiece(Piece piece)

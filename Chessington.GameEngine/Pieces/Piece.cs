@@ -28,6 +28,23 @@ namespace Chessington.GameEngine.Pieces
             var currentSquare = board.FindPiece(this);
             board.MovePiece(currentSquare, newSquare);
             this.MovesCount++;
+
+            var nextMoves = GetAvailableMoves(board);
+
+            foreach (var move in nextMoves)
+            {
+                if (board.GetPiece(move) is King)
+                {
+                    if (this.Player == Player.White)
+                    {
+                        board.SetCheck(Player.Black);
+                    }
+                    else
+                    {
+                        board.SetCheck(Player.White);
+                    }
+                }
+            }
         }
     }
 }
