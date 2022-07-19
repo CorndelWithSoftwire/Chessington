@@ -21,6 +21,14 @@ namespace Chessington.GameEngine
             CapturedPieces = new List<Piece>();
         }
 
+        public bool isOccupied(int row, int col)
+        {
+            if (board[row, col] != null && board[row, col].Player == CurrentPlayer)
+                return true;
+
+            return false;
+        }
+
         public void AddPiece(Square square, Piece pawn)
         {
             board[square.Row, square.Col] = pawn;

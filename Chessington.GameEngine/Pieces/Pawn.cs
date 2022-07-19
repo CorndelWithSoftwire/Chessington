@@ -20,13 +20,18 @@ namespace Chessington.GameEngine.Pieces
             //create new square at new position to later add to a list with available moves
             var new_square = Square.At(board.FindPiece(this).Row + pos, board.FindPiece(this).Col);
             var moves = new List<Square>();
-            moves.Add((new_square));
 
-            if (this.moved_already == false)
+            if (!board.isOccupied(board.FindPiece(this).Row + pos, board.FindPiece(this).Col))
             {
-                pos *= 2;
-                var new_square_2 = Square.At(board.FindPiece(this).Row + pos, board.FindPiece(this).Col);
-                moves.Add((new_square_2));
+                moves.Add((new_square));
+
+                if (this.moved_already == false)
+                {
+                    pos *= 2;
+                    var new_square_2 = Square.At(board.FindPiece(this).Row + pos, board.FindPiece(this).Col);
+                    if (!board.isOccupied(board.FindPiece(this).Row + pos, board.FindPiece(this).Col))
+                        moves.Add((new_square_2));
+                }
             }
 
 
