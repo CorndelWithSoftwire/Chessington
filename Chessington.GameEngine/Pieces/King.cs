@@ -10,7 +10,33 @@ namespace Chessington.GameEngine.Pieces
 
         public override IEnumerable<Square> GetAvailableMoves(Board board)
         {
-            return Enumerable.Empty<Square>();
+            var expectedMoves = new List<Square>();
+
+            if (board.FindPiece(this).Row - 1 >= 0 && board.FindPiece(this).Col + 1 <= 7)
+                expectedMoves.Add(Square.At(board.FindPiece(this).Row - 1, board.FindPiece(this).Col + 1));
+
+            if (board.FindPiece(this).Row - 1 >= 0 && board.FindPiece(this).Col - 1 >= 0)
+                expectedMoves.Add(Square.At(board.FindPiece(this).Row - 1, board.FindPiece(this).Col - 1));
+
+            if (board.FindPiece(this).Row - 1 >= 0)
+                expectedMoves.Add(Square.At(board.FindPiece(this).Row - 1, board.FindPiece(this).Col));
+
+            if (board.FindPiece(this).Row + 1 <= 7)
+                expectedMoves.Add(Square.At(board.FindPiece(this).Row + 1, board.FindPiece(this).Col));
+
+            if (board.FindPiece(this).Col - 1 >= 0)
+                expectedMoves.Add(Square.At(board.FindPiece(this).Row, board.FindPiece(this).Col - 1));
+
+            if (board.FindPiece(this).Col + 1 <= 7)
+                expectedMoves.Add(Square.At(board.FindPiece(this).Row, board.FindPiece(this).Col + 1));
+
+            if (board.FindPiece(this).Row + 1 <= 7 && board.FindPiece(this).Col - 1 >= 0)
+                expectedMoves.Add(Square.At(board.FindPiece(this).Row + 1, board.FindPiece(this).Col - 1));
+
+            if (board.FindPiece(this).Row + 1 <= 7 && board.FindPiece(this).Col + 1 <= 7)
+                expectedMoves.Add(Square.At(board.FindPiece(this).Row + 1, board.FindPiece(this).Col + 1));
+
+            return expectedMoves;
         }
     }
 }
