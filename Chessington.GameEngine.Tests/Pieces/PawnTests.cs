@@ -139,7 +139,7 @@ namespace Chessington.GameEngine.Tests.Pieces
         [Test]
         public void BlackPawns_CanMoveDiagonally_IfThereIsAPieceToTake()
         {
-            var board = new Board();
+            var board = new Board(Player.Black);
             var pawn = new Pawn(Player.Black);
             var firstTarget = new Pawn(Player.White);
             var secondTarget = new Pawn(Player.White);
@@ -173,8 +173,8 @@ namespace Chessington.GameEngine.Tests.Pieces
         [Test]
         public void BlackPawns_CannotMoveDiagonally_IfThereIsNoPieceToTake()
         {
-            var board = new Board();
             var pawn = new Pawn(Player.Black);
+            var board = new Board(Player.Black);
             board.AddPiece(Square.At(5, 3), pawn);
 
             var friendlyPiece = new Pawn(Player.Black);

@@ -11,41 +11,51 @@ namespace Chessington.GameEngine.Pieces
         public override IEnumerable<Square> GetAvailableMoves(Board board)
         {
             //determine color of player
-            int pos;
+            int direction_to_move;
             if (this.Player == Player.White)
-                pos = -1;
+                direction_to_move = -1;
             else
-                pos = 1;
+                direction_to_move = 1;
 
             var moves = new List<Square>();
 
 
-            if (board.FindPiece(this).Row + pos < 0 || board.FindPiece(this).Row + pos> 7 || board.FindPiece(this).Col < 0 ||
+            if (board.FindPiece(this).Row + direction_to_move < 0 ||
+                board.FindPiece(this).Row + direction_to_move > 7 || board.FindPiece(this).Col < 0 ||
                 board.FindPiece(this).Col > 7)
                 return moves;
 
-            //create new square at new position to later add to a list with available moves
-            var new_square = Square.At(board.FindPiece(this).Row + pos, board.FindPiece(this).Col);
-            
 
-            if (!board.isSquareOccupiedByFriend(board.FindPiece(this).Row + pos, board.FindPiece(this).Col))
+            if (!board.isSquareOccupiedByFriend(board.FindPiece(this).Row + direction_to_move, board.FindPiece(this).Col) && !board.isSquareOccupiedByEnemy(board.FindPiece(this).Row + direction_to_move, board.FindPiece(this).Col))
             {
-                moves.Add((new_square));
+                moves.Add(Square.At(board.FindPiece(this).Row + direction_to_move, board.FindPiece(this).Col));
 
                 if (this.moved_already == false)
                 {
-                    pos *= 2;
-                    if (board.FindPiece(this).Row + pos < 0 || board.FindPiece(this).Row + pos> 7 || board.FindPiece(this).Col < 0 ||
+                    if (board.FindPiece(this).Row + direction_to_move * 2 < 0 ||
+                        board.FindPiece(this).Row + direction_to_move * 2 > 7 || board.FindPiece(this).Col < 0 ||
                         board.FindPiece(this).Col > 7)
                         return moves;
-                    var new_square_2 = Square.At(board.FindPiece(this).Row + pos, board.FindPiece(this).Col);
-                    if (!board.isSquareOccupiedByFriend(board.FindPiece(this).Row + pos, board.FindPiece(this).Col))
-                        moves.Add((new_square_2));
+                    if (!board.isSquareOccupiedByFriend(board.FindPiece(this).Row + direction_to_move * 2,
+                            board.FindPiece(this).Col) && !board.isSquareOccupiedByEnemy(board.FindPiece(this).Row + direction_to_move * 2,
+                            board.FindPiece(this).Col))
+                        moves.Add(Square.At(board.FindPiece(this).Row + direction_to_move * 2,
+                            board.FindPiece(this).Col));
                 }
             }
 
+            if (board.FindPiece(this).Row + direction_to_move <= 7 && board.FindPiece(this).Row + direction_to_move >=0  && board.FindPiece(this).Col - 1 >=0)
+                if (board.isSquareOccupiedByEnemy(board.FindPiece(this).Row + direction_to_move,
+                        board.FindPiece(this).Col - 1))
+                    moves.Add(Square.At(board.FindPiece(this).Row + direction_to_move, board.FindPiece(this).Col - 1));
+
+            if (board.FindPiece(this).Row + direction_to_move <= 7 && board.FindPiece(this).Row + direction_to_move >= 0 && board.FindPiece(this).Col + 1 <= 7)
+                if (board.isSquareOccupiedByEnemy(board.FindPiece(this).Row + direction_to_move,
+                        board.FindPiece(this).Col + 1))
+                    moves.Add(Square.At(board.FindPiece(this).Row + direction_to_move, board.FindPiece(this).Col + 1));
 
             return moves;
+
         }
     }
 }
