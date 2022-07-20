@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Chessington.GameEngine.Pieces
 {
@@ -30,7 +31,7 @@ namespace Chessington.GameEngine.Pieces
             {
                 moves.Add(Square.At(board.FindPiece(this).Row + direction_to_move, board.FindPiece(this).Col));
 
-                if (this.moved_already == false)
+                if (this.previous_positions.Count == 0)
                 {
                     if (board.FindPiece(this).Row + direction_to_move * 2 < 0 ||
                         board.FindPiece(this).Row + direction_to_move * 2 > 7 || board.FindPiece(this).Col < 0 ||
@@ -44,6 +45,7 @@ namespace Chessington.GameEngine.Pieces
                 }
             }
 
+            //diagonally possible attack check
             if (board.FindPiece(this).Row + direction_to_move <= 7 && board.FindPiece(this).Row + direction_to_move >=0  && board.FindPiece(this).Col - 1 >=0)
                 if (board.isSquareOccupiedByEnemy(board.FindPiece(this).Row + direction_to_move,
                         board.FindPiece(this).Col - 1))
@@ -54,8 +56,22 @@ namespace Chessington.GameEngine.Pieces
                         board.FindPiece(this).Col + 1))
                     moves.Add(Square.At(board.FindPiece(this).Row + direction_to_move, board.FindPiece(this).Col + 1));
 
+            //check if en passant move is possible to the left
+            if (board.FindPiece(this).Col - 1 >= 0 &&
+                board.isSquareOccupiedByEnemy(board.FindPiece(this).Row, board.FindPiece(this).Col - 1) &&
+                board.isVulnerableToEnPessant(board.FindPiece(this).Row, board.FindPiece(this).Col - 1))
+                moves.Add(Square.At(board.FindPiece(this).Row + direction_to_move, board.FindPiece(this).Col - 1));
+
+            //check if en passant move is possible to the left
+            if (board.FindPiece(this).Col + 1 <= 7 &&
+                board.isSquareOccupiedByEnemy(board.FindPiece(this).Row, board.FindPiece(this).Col + 1) &&
+                board.isVulnerableToEnPessant(board.FindPiece(this).Row, board.FindPiece(this).Col + 1))
+                moves.Add(Square.At(board.FindPiece(this).Row + direction_to_move, board.FindPiece(this).Col + 1));
+
             return moves;
 
         }
+
+
     }
 }
