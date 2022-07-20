@@ -23,16 +23,18 @@ namespace Chessington.GameEngine
 
         public bool isSquareOccupiedByFriend(int row, int col)
         {
-            if (board[row, col] != null && board[row, col].Player == CurrentPlayer)
-                return true;
+            if(row <=7 && row >=0 && col >=0 && col <=7)//make sure we don't get array out of bounds
+                if (board[row, col] != null && board[row, col].Player == CurrentPlayer)
+                    return true;
 
             return false;
         }
 
         public bool isSquareOccupiedByEnemy(int row, int col)
         {
-            if (board[row, col] != null && board[row, col].Player != CurrentPlayer)
-                return true;
+            if (row <= 7 && row >= 0 && col >= 0 && col <= 7)//make sure we don't get array out of bounds
+                if (board[row, col] != null && board[row, col].Player != CurrentPlayer)
+                    return true;
 
             return false;
         }
