@@ -21,7 +21,7 @@ namespace Chessington.GameEngine.Pieces
             var new_square = Square.At(board.FindPiece(this).Row + pos, board.FindPiece(this).Col);
             var moves = new List<Square>();
 
-            if (!board.isOccupied(board.FindPiece(this).Row + pos, board.FindPiece(this).Col))
+            if (!board.isSquareOccupiedByFriend(board.FindPiece(this).Row + pos, board.FindPiece(this).Col))
             {
                 moves.Add((new_square));
 
@@ -29,7 +29,7 @@ namespace Chessington.GameEngine.Pieces
                 {
                     pos *= 2;
                     var new_square_2 = Square.At(board.FindPiece(this).Row + pos, board.FindPiece(this).Col);
-                    if (!board.isOccupied(board.FindPiece(this).Row + pos, board.FindPiece(this).Col))
+                    if (!board.isSquareOccupiedByFriend(board.FindPiece(this).Row + pos, board.FindPiece(this).Col))
                         moves.Add((new_square_2));
                 }
             }
