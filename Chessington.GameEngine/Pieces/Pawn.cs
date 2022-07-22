@@ -69,7 +69,6 @@ namespace Chessington.GameEngine.Pieces
                 moves.Add(Square.At(board.FindPiece(this).Row + direction_to_move, board.FindPiece(this).Col + 1));
 
             return moves;
-
         }
 
 
